@@ -1,5 +1,6 @@
 ## Hi there 👋
 
+I'm Óscar, a Fullstack developer based in Córdoba, Spain.
 <!--
 **Rackxso/Rackxso** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
