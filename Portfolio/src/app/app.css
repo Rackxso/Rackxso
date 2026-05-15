@@ -211,3 +211,59 @@ router-outlet {
 .tab.active[data-section="contact"]  { box-shadow: inset 0 2px 0 var(--color-contact); }
 
 /* === FIN MEJORAS DE DISEÑO === */
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 640px) {
+  .cuerpo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .columna {
+    display: none;
+  }
+
+  .sidebar {
+    order: 2;
+    flex-direction: row;
+    padding: 6px;
+    gap: 4px;
+    border-top: 1px solid color-mix(in hsl, var(--header-bg-color) 30%, var(--text-color1) 70%);
+    overflow-x: auto;
+
+    & .nav-item {
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 4px;
+      gap: 4px;
+      justify-content: center;
+      border-radius: 8px;
+
+      & p {
+        font-size: 0.65rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60px;
+      }
+    }
+  }
+
+  .editor {
+    order: 1;
+    flex: 1;
+    min-height: 0;
+
+    & .tabs-bar {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+/* === FIN RESPONSIVIDAD MÓVIL === */

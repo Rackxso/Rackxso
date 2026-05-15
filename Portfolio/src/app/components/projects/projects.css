@@ -22,6 +22,7 @@ main {
 .project-card:nth-child(1) { animation: fadeInUp 0.5s ease-out both 0.12s; }
 .project-card:nth-child(2) { animation: fadeInUp 0.5s ease-out both 0.24s; }
 .project-card:nth-child(3) { animation: fadeInUp 0.5s ease-out both 0.36s; }
+.project-card:nth-child(4) { animation: fadeInUp 0.5s ease-out both 0.48s; }
 
 .page-header {
   display: flex;
@@ -126,4 +127,15 @@ p {
     border-radius: 4px;
     padding: 2px 10px;
   }
+}
+
+.wip-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  background: color-mix(in hsl, var(--color-about) 18%, var(--header-bg-color) 82%);
+  color: var(--color-about);
+  border: 1px solid color-mix(in hsl, var(--color-about) 35%, transparent 65%);
+  border-radius: 20px;
+  padding: 2px 8px;
+  vertical-align: middle;
 }

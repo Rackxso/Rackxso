@@ -166,3 +166,16 @@ h1 {
 .card.proyect:hover { box-shadow: 0 4px 22px color-mix(in hsl, var(--color-projects) 40%, transparent 60%); }
 .card.contact:hover { box-shadow: 0 4px 22px color-mix(in hsl, var(--color-contact) 40%, transparent 60%); }
 /* === FIN MEJORAS DE DISEÑO === */
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .home-wrap {
+    padding: 40px 16px;
+    gap: 32px;
+  }
+}
+/* === FIN RESPONSIVIDAD MÓVIL === */

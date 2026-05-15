@@ -209,3 +209,15 @@ h1 {
   align-items: center;
   gap: 7px;
 }
+
+/* === RESPONSIVIDAD MÓVIL === */
+@media (max-width: 540px) {
+  .profile {
+    flex-wrap: wrap;
+  }
+
+  .extras {
+    grid-template-columns: 1fr;
+  }
+}
+/* === FIN RESPONSIVIDAD MÓVIL === */
