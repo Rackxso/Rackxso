@@ -1,59 +1,45 @@
-# Portfolio
+# Portfolio — Óscar Ureña Salvador
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+Portfolio personal con interfaz inspirada en VS Code. Barra lateral con secciones como archivos `.md`, pestañas con drag & drop y enrutado entre vistas como si fueran documentos abiertos en un editor.
 
-## Development server
+## Stack
 
-To start a local development server, run:
+- **Angular 21** — standalone components, sin NgModules
+- **Angular SSR** — usado en build para prerrenderizado estático
+- **Vitest** — tests unitarios
+- **CSS puro** — custom properties, nesting nativo, sin frameworks
+- **TypeScript 5.9** — modo strict
+- **Font Awesome 7** — iconos vía CDN
+- **Inter** — fuente vía Google Fonts
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Desarrollo local
 
 ```bash
-ng generate component component-name
+npm install
+npm start          # localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Build
 
 ```bash
-ng generate --help
+npm run build      # genera dist/Portfolio/browser/
 ```
 
-## Building
+El build prerenderiza todas las rutas a HTML estático (`outputMode: static`).
 
-To build the project run:
+## Tests
 
 ```bash
-ng build
+npm test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Despliegue — Cloudflare Pages
 
-## Running unit tests
+| Ajuste | Valor |
+|---|---|
+| Root directory | `Portfolio` |
+| Build command | `npm run build` |
+| Build output directory | `dist/Portfolio/browser` |
+| Node.js version | 18 o superior |
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+El fichero `public/_redirects` ya está incluido como fallback para el enrutado client-side.
