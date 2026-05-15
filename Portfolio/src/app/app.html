@@ -1,5 +1,7 @@
 <section>
   <header>
+    <i class="fa-solid fa-code"></i>
+    Porfolio de Óscar Ureña Salvador
   </header>
   <div class="cuerpo">
     <div class="columna">
@@ -7,21 +9,46 @@
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
     <div class="sidebar">
-      <div class="nav-item about" (click)="redirigir('about')">Sobre_mí.md</div>
-      <div class="nav-item skill" (click)="redirigir('skill')">Habilidades.md</div>
-      <div class="nav-item proyect" (click)="redirigir('projects')">Proyectos.md</div>
-      <div class="nav-item contact" (click)="redirigir('contact')">Contacto.md</div>
+      <div class="nav-item about" (click)="redirigir('about')">
+        <i class="fa-solid fa-person"></i>
+        <p>Sobre_mí.md</p>
+      </div>
+      <div class="nav-item skill" (click)="redirigir('skill')">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <p>Habilidades.md</p>
+      </div>
+      <div class="nav-item proyect" (click)="redirigir('projects')">
+        <i class="fa-solid fa-briefcase"></i>
+        <p>Proyectos.md</p>
+      </div>
+      <div class="nav-item contact" (click)="redirigir('contact')">
+        <i class="fa-solid fa-envelope"></i>
+        <p>Contacto.md</p>
+      </div>
     </div>
     <div class="editor">
-      <div class="tabs-bar">
+      <div class="tabs-bar" #tabsBar>
         @for (tab of openedTabs; track tab) {
-          <div class="tab" [class.active]="tab === activeTab" (click)="redirigir(tab)">
+          <div
+            class="tab"
+            [class.active]="tab === activeTab"
+            [class.dragging]="tab === draggedTab"
+            [attr.data-section]="tab"
+            draggable="true"
+            (click)="redirigir(tab)"
+            (dragstart)="onDragStart(tab)"
+            (dragover)="onDragOver($event, tab)"
+            (drop)="onDrop($event)"
+            (dragend)="onDragEnd()"
+          >
             <span class="tab-name">{{ tab }}.md</span>
             <span class="tab-close" (click)="closeTab(tab, $event)">✕</span>
           </div>
         }
       </div>
-      <router-outlet />
+      <div class="content-area">
+        <router-outlet />
+      </div>
     </div>
   </div>
 </section>

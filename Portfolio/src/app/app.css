@@ -1,105 +1,213 @@
 section {
-    height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 header {
-    background: var(--header-bg-color);
-    color: var(--text-color1);
-    padding: 15px;
+  background: var(--header-bg-color);
+  color: var(--text-color1);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+
+  & i {
+    font-size: 15px;
+    opacity: 0.65;
+  }
 }
 
 .cuerpo {
-    height: 100%;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+
+  & .columna {
+    padding: 7px;
+    background: var(--header-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: var(--text-color1);
+
+    & i {
+      font-size: 25px;
+    }
+  }
+
+  & .sidebar {
+    background: var(--sidebar-bg-color);
+    color: var(--text-color1);
+    padding: 10px;
+
+    & .nav-item {
+      padding: 10px 20px;
+      margin-block: 5px;
+      background: color-mix(in hsl, var(--header-bg-color) 30%, var(--pages-bg-color) 70%);
+
+      border-radius: 10px;
+      transition: all 0.2s;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: color-mix(in hsl, var(--header-bg-color) 15%, var(--pages-bg-color) 85%);
+      }
+    }
+
+    & .about {
+      margin-top: 0px;
+
+      i {
+        color: var(--color-about);
+      }
+    }
+
+    & .skill {
+      i {
+        color: var(--color-skill);
+      }
+    }
+
+    & .proyect {
+      i {
+        color: var(--color-projects);
+      }
+    }
+    
+    & .contact {
+      i{
+        color: var(--color-contact);
+      }
+    }
+  }
+
+  & .editor {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    min-height: 0;
+    --active-section-color: var(--text-color1);
 
-    & .columna {
-        padding: 7px;
-        background: var(--header-bg-color);
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        color: var(--text-color1);
+    &:has(.tab.active[data-section="about"])    { --active-section-color: var(--color-about); }
+    &:has(.tab.active[data-section="skill"])    { --active-section-color: var(--color-skill); }
+    &:has(.tab.active[data-section="projects"]) { --active-section-color: var(--color-projects); }
+    &:has(.tab.active[data-section="contact"])  { --active-section-color: var(--color-contact); }
 
-        & i {
-            font-size: 25px;
-        }
+    & .content-area {
+      overflow-y: auto;
+      min-height: 0;
+      scrollbar-width: thin;
+      scrollbar-color:
+        color-mix(in hsl, var(--active-section-color) 55%, var(--pages-bg-color) 45%)
+        var(--pages-bg-color);
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: var(--pages-bg-color);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: color-mix(in hsl, var(--active-section-color) 55%, var(--pages-bg-color) 45%);
+        border-radius: 4px;
+        border: 2px solid var(--pages-bg-color);
+        transition: background 0.2s;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: var(--active-section-color);
+      }
     }
 
-    & .sidebar {
-        background: var(--sidebar-bg-color);
-        color: var(--text-color1);
-        padding: 10px;
+    & .tabs-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      padding: 6px 8px 0;
+      background: var(--header-bg-color);
+      border-bottom: 2px solid color-mix(in hsl, var(--header-bg-color) 30%, var(--text-color1) 70%);
 
-        & .nav-item {
-            padding: 10px 20px;
-            margin-block: 5px;
-            background: color-mix(in hsl, var(--header-bg-color) 30%, var(--pages-bg-color) 70%);
-            text-align: right;
-            border-radius: 10px;
-            transition: all 0.2s;
-
-            &:hover {
-                cursor: pointer;
-                background: color-mix(in hsl, var(--header-bg-color) 15%, var(--pages-bg-color) 85%);
-            }
-
-            &.about {
-                margin-top: 0px;
-            }
-        }
-    }
-
-    & .editor {
+      & .tab {
         display: grid;
-        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px 7px;
+        color: var(--text-color1);
+        opacity: 0.55;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        transition: opacity 0.2s, background 0.2s;
+        font-size: 13px;
+        position: relative;
+        bottom: -2px;
 
-        & .tabs-bar {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: max-content;
-            background: var(--header-bg-color);
-            border-bottom: 1px solid color-mix(in hsl, var(--header-bg-color) 50%, var(--text-color1) 50%);
-
-            & .tab {
-                display: grid;
-                grid-template-columns: 1fr auto;
-                align-items: center;
-                gap: 8px;
-                padding: 6px 14px;
-                color: var(--text-color1);
-                opacity: 0.6;
-                cursor: pointer;
-                border-right: 1px solid color-mix(in hsl, var(--header-bg-color) 50%, var(--text-color1) 50%);
-                transition: opacity 0.2s;
-                font-size: 13px;
-
-                &:hover {
-                    opacity: 0.9;
-                }
-
-                &.active {
-                    opacity: 1;
-                    background: var(--pages-bg-color);
-                    border-top: 1px solid var(--text-color1);
-                }
-
-                & .tab-close {
-                    font-size: 11px;
-                    opacity: 0.6;
-                    border-radius: 3px;
-                    padding: 1px 3px;
-
-                    &:hover {
-                        opacity: 1;
-                        background: color-mix(in hsl, var(--header-bg-color) 50%, var(--text-color1) 50%);
-                    }
-                }
-            }
+        &:hover {
+          opacity: 0.85;
+          background: color-mix(in hsl, var(--header-bg-color) 50%, var(--pages-bg-color) 50%);
         }
+
+        &.active {
+          opacity: 1;
+          background: var(--pages-bg-color);
+          border-color: color-mix(in hsl, var(--header-bg-color) 30%, var(--text-color1) 70%);
+          border-bottom-color: var(--pages-bg-color);
+        }
+
+        &.dragging {
+          opacity: 0.3;
+          cursor: grabbing;
+        }
+
+        & .tab-close {
+          font-size: 11px;
+          opacity: 0.6;
+          border-radius: 3px;
+          padding: 1px 3px;
+
+          &:hover {
+            opacity: 1;
+            background: color-mix(in hsl, var(--header-bg-color) 50%, var(--text-color1) 50%);
+          }
+        }
+      }
     }
+  }
 }
 
 router-outlet {
-    display: none;
+  display: none;
 }
+
+/* === MEJORAS DE DISEÑO: sombras sidebar + indicador de pestaña activa === */
+
+/* Elevación sutil en los nav-items */
+.sidebar .nav-item {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+/* Indicador de color en la línea superior de la pestaña activa */
+.tab.active[data-section="about"]    { box-shadow: inset 0 2px 0 var(--color-about); }
+.tab.active[data-section="skill"]    { box-shadow: inset 0 2px 0 var(--color-skill); }
+.tab.active[data-section="projects"] { box-shadow: inset 0 2px 0 var(--color-projects); }
+.tab.active[data-section="contact"]  { box-shadow: inset 0 2px 0 var(--color-contact); }
+
+/* === FIN MEJORAS DE DISEÑO === */

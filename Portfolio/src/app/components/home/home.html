@@ -1,3 +1,53 @@
-<main>
-    esto es Home
+<main #mainEl>
+  <!-- === PLEXUS BACKGROUND === -->
+  <canvas #plexusCanvas class="plexus-bg"></canvas>
+  <!-- === END PLEXUS BACKGROUND === -->
+
+  <div class="home-wrap">
+    <div class="intro">
+      <pre class="comment">// Óscar Ureña Salvador — Portfolio</pre>
+      <h1>Hola, soy <span class="name">Óscar</span> <span class="cursor">▌</span></h1>
+      <p class="subtitle">Desarrollador de Aplicaciones Web</p>
+      <p class="description">
+        Proactivo y con ganas de aprender. Me adapto rápido a nuevos entornos
+        y disfruto trabajando en equipo para construir soluciones web bien hechas.
+      </p>
+    </div>
+
+    <div class="explorer-hint">
+      <i class="fa-regular fa-file"></i>
+      <span>Explora las secciones desde la barra lateral</span>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card about" (click)="navigate('about')">
+        <i class="fa-solid fa-person"></i>
+        <div class="card-body">
+          <span class="card-title">Sobre_mí.md</span>
+          <span class="card-desc">Quién soy, mi historia y motivaciones</span>
+        </div>
+      </div>
+      <div class="card skill" (click)="navigate('skill')">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <div class="card-body">
+          <span class="card-title">Habilidades.md</span>
+          <span class="card-desc">Mi stack tecnológico y herramientas</span>
+        </div>
+      </div>
+      <div class="card proyect" (click)="navigate('projects')">
+        <i class="fa-solid fa-briefcase"></i>
+        <div class="card-body">
+          <span class="card-title">Proyectos.md</span>
+          <span class="card-desc">Lo que he construido hasta ahora</span>
+        </div>
+      </div>
+      <div class="card contact" (click)="navigate('contact')">
+        <i class="fa-solid fa-envelope"></i>
+        <div class="card-body">
+          <span class="card-title">Contacto.md</span>
+          <span class="card-desc">Hablemos y trabajemos juntos</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

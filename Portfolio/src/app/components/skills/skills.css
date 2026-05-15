@@ -1,0 +1,105 @@
+main {
+  padding: 0;
+  /* === MEJORAS DE DISEÑO: gradiente por sección === */
+  background: radial-gradient(
+    ellipse at 15% 10%,
+    color-mix(in hsl, var(--color-skill) 14%, var(--pages-bg-color) 86%) 0%,
+    var(--pages-bg-color) 60%
+  );
+  /* === FIN MEJORAS DE DISEÑO === */
+}
+
+.skills-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 50px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page-header { animation: fadeInUp 0.5s ease-out both; }
+.skills-wrap .category:nth-child(2) { animation: fadeInUp 0.5s ease-out both 0.12s; }
+.skills-wrap .category:nth-child(3) { animation: fadeInUp 0.5s ease-out both 0.22s; }
+.skills-wrap .category:nth-child(4) { animation: fadeInUp 0.5s ease-out both 0.32s; }
+.skills-wrap .category:nth-child(5) { animation: fadeInUp 0.5s ease-out both 0.42s; }
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+
+  & .hash {
+    color: var(--color-skill);
+    margin-right: 4px;
+  }
+}
+
+.intro {
+  opacity: 0.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  & h2 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-skill);
+    margin: 0;
+    opacity: 0.75;
+  }
+}
+
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in hsl, var(--color-skill) 10%, var(--header-bg-color) 90%);
+  border: 1px solid color-mix(in hsl, var(--color-skill) 28%, transparent 72%);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  transition: all 0.15s;
+
+  & i {
+    color: var(--color-skill);
+    font-size: 15px;
+  }
+
+  &:hover {
+    background: color-mix(in hsl, var(--color-skill) 18%, var(--header-bg-color) 82%);
+    transform: translateY(-1px);
+  }
+
+  &.soft {
+    background: color-mix(in hsl, var(--color-about) 8%, var(--header-bg-color) 92%);
+    border-color: color-mix(in hsl, var(--color-about) 25%, transparent 75%);
+
+    & i {
+      color: var(--color-about);
+    }
+
+    &:hover {
+      background: color-mix(in hsl, var(--color-about) 15%, var(--header-bg-color) 85%);
+    }
+  }
+}

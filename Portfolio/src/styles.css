@@ -1,22 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-:root{
-    --header-bg-color: #232634;
-    --sidebar-bg-color: #292c3c;
-    --pages-bg-color: #303446;
-    --text-color1: #b2bbdd;
-    --app-font: 'Inter', sans-serif;
+:root {
+  --header-bg-color: #232634;
+  --sidebar-bg-color: #292c3c;
+  --pages-bg-color: #303446;
+  --text-color1: #b2bbdd;
+  --color-about: #f4a261;
+  --color-skill: #9b5de5;
+  --color-projects: #457b9d;
+  --color-contact: #2a9d8f;
+  --app-font: 'Inter', sans-serif;
 }
 
-html, body{
-    margin: 0;
-    height: 100%;
-    font-family: var(--app-font);
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: var(--app-font);
 }
 
-main{
-    background: var(--pages-bg-color);
-    color: var(--text-color1);
-    height: 100%;
-    padding: 10px;
+main {
+  background: var(--pages-bg-color);
+  color: var(--text-color1);
+  height: 100%;
+  padding: 10px;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === MEJORAS DE DISEÑO: gradiente sutil en el área de contenido === */
+main {
+  background: radial-gradient(
+    ellipse at 25% 15%,
+    color-mix(in hsl, var(--pages-bg-color) 88%, #5a6080 12%) 0%,
+    var(--pages-bg-color) 65%
+  );
+}
+/* === FIN MEJORAS DE DISEÑO === */

@@ -1,3 +1,63 @@
 <main>
-    esto es contact
+  <div class="contact-wrap">
+
+    <div class="page-header">
+      <h1><span class="hash">#</span> Contacto</h1>
+      <p class="intro">¿Tienes un proyecto en mente o quieres charlar? Escríbeme.</p>
+    </div>
+
+    <div class="contact-links">
+      <div class="contact-item" (click)="copyEmail()">
+        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="info">
+          <span class="label">Email</span>
+          <span class="value">{{ email() }}</span>
+        </div>
+        <i class="arrow" [class]="copied ? 'fa-solid fa-check' : 'fa-regular fa-clipboard'"></i>
+      </div>
+      <a href="https://www.linkedin.com/in/oscar-urena04/" target="_blank" class="contact-item">
+        <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+        <div class="info">
+          <span class="label">LinkedIn</span>
+          <span class="value">linkedin.com/in/oscar-urena04</span>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+      </a>
+      <a href="https://github.com/Rackxso" target="_blank" class="contact-item">
+        <div class="icon"><i class="fa-brands fa-github"></i></div>
+        <div class="info">
+          <span class="label">GitHub</span>
+          <span class="value">github.com/Rackxso</span>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+      </a>
+      <div class="contact-item static">
+        <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="info">
+          <span class="label">Ubicación</span>
+          <span class="value">Córdoba, España</span>
+        </div>
+      </div>
+      <div class="contact-item static">
+        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="info">
+          <span class="label">Teléfono</span>
+          <span class="value">+34 693 30 20 42</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-box">
+      <i class="fa-solid fa-comment-dots"></i>
+      <p>
+        Estoy abierto a nuevas oportunidades, prácticas, colaboraciones o simplemente
+        una buena conversación sobre tecnología y desarrollo web.
+      </p>
+      <span class="availability">
+        <span class="dot"></span>
+        Disponible para proyectos
+      </span>
+    </div>
+
+  </div>
 </main>
