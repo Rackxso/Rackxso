@@ -22,7 +22,7 @@ body {
 main {
   background: var(--pages-bg-color);
   color: var(--text-color1);
-  height: 100%;
+  min-height: 100%;
   padding: 10px;
 }
 
