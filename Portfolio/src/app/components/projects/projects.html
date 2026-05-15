@@ -8,14 +8,17 @@
 
     <div class="projects-grid">
 
-      <div class="project-card">
+      <div class="project-card" routerLink="/projects/live-notes" style="cursor:pointer">
+        <div class="card-preview">
+          <img src="projects/livenotes-preview.png" alt="LiveNotes preview" loading="lazy" />
+        </div>
         <div class="card-header">
           <i class="fa-solid fa-calendar-days"></i>
           <div class="card-links">
-            <a href="https://live-notes.org" target="_blank" rel="noopener noreferrer" title="Web">
+            <a href="https://live-notes.org" target="_blank" rel="noopener noreferrer" title="Web" (click)="$event.stopPropagation()">
               <i class="fa-solid fa-globe"></i>
             </a>
-            <a href="https://github.com/Rackxso/LiveNotes" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <a href="https://github.com/Rackxso/LiveNotes" target="_blank" rel="noopener noreferrer" title="GitHub" (click)="$event.stopPropagation()">
               <i class="fa-brands fa-github"></i>
             </a>
           </div>
@@ -23,7 +26,7 @@
         <h2>LiveNotes.</h2>
         <p>
           Workspace personal todo-en-uno: notas con categorías, seguimiento financiero,
-          hábitos con rachas diarias, calendario y soporte multidioma. Disponible también como app Android.
+          hábitos con rachas diarias, calendario y soporte multidioma. Próximamente en Play Store.
         </p>
         <div class="tech-tags">
           <span>Angular 21</span>
@@ -34,14 +37,14 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" routerLink="/projects/cyclepath" style="cursor:pointer">
         <div class="card-header">
           <i class="fa-solid fa-map-location-dot"></i>
           <div class="card-links">
-            <a href="https://cyclepath.pages.dev/" target="_blank" rel="noopener noreferrer" title="Web">
+            <a href="https://cyclepath.pages.dev/" target="_blank" rel="noopener noreferrer" title="Web" (click)="$event.stopPropagation()">
               <i class="fa-solid fa-globe"></i>
             </a>
-            <a href="https://github.com/Rackxso/CyclePath." target="_blank" rel="noopener noreferrer" title="GitHub">
+            <a href="https://github.com/Rackxso/CyclePath." target="_blank" rel="noopener noreferrer" title="GitHub" (click)="$event.stopPropagation()">
               <i class="fa-brands fa-github"></i>
             </a>
           </div>

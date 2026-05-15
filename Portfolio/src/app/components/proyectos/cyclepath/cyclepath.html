@@ -1,0 +1,178 @@
+<main>
+  <div class="cp-wrap">
+
+    <!-- HEADER -->
+    <div class="cp-header">
+      <div class="cp-title-row">
+        <div class="cp-icon">
+          <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <div>
+          <h1>CyclePath.</h1>
+          <p class="cp-tagline">Carriles bici de todo el mundo, en un mapa.</p>
+        </div>
+      </div>
+      <div class="cp-badges">
+        <span class="badge badge-wip"><i class="fa-solid fa-code"></i> En desarrollo</span>
+      </div>
+      <div class="cp-links">
+        <a href="https://cyclepath.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <i class="fa-solid fa-globe"></i> Abrir app
+        </a>
+        <a href="https://github.com/Rackxso/CyclePath." target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fa-brands fa-github"></i> Ver código
+        </a>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <section class="section">
+      <h2><span class="hash">#</span> ¿Qué es CyclePath?</h2>
+      <p>
+        CyclePath es un mapa interactivo que muestra la red ciclista de cualquier ciudad del mundo.
+        Busca una ciudad y visualiza al instante sus carriles bici clasificados por tipo:
+        vías exclusivas, carriles en calzada y aceras bici.
+      </p>
+      <pre class="comment">// Datos en tiempo real desde OpenStreetMap vía Overpass API</pre>
+      <p>
+        Además del mapa, incluye un calculador de rutas punto a punto que usa el algoritmo A*
+        para trazar el camino más corto utilizando exclusivamente infraestructura ciclista disponible.
+      </p>
+    </section>
+
+    <!-- CARRUSEL -->
+    <section class="section">
+      <h2><span class="hash">#</span> Pantallas</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          @for (slide of slides; track $index) {
+            <div class="carousel-slide" [class.active]="current() === $index">
+              @if (slide.src) {
+                <img [src]="slide.src" [alt]="slide.caption" />
+              } @else {
+                <div class="slide-placeholder">
+                  <i [class]="slide.icon"></i>
+                  <span>{{ slide.caption }}</span>
+                  <span class="placeholder-hint">Captura próximamente</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <button class="carousel-btn prev" (click)="prev()" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" (click)="next()" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="carousel-caption">{{ slides[current()].caption }}</div>
+
+        <div class="carousel-dots">
+          @for (slide of slides; track $index) {
+            <button
+              class="dot"
+              [class.active]="current() === $index"
+              (click)="goTo($index)"
+              [attr.aria-label]="slide.caption"
+            ></button>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="section">
+      <h2><span class="hash">#</span> Funcionalidades</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>Búsqueda global</h3>
+          <p>Busca cualquier ciudad del mundo con autocompletado en tiempo real.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-map"></i>
+          <h3>Mapa interactivo</h3>
+          <p>Red ciclista superpuesta sobre el mapa base, con zoom y desplazamiento fluido.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>Tipos de carril</h3>
+          <p>Diferencia entre vías exclusivas, carriles en calzada y aceras bici por color.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-route"></i>
+          <h3>Calculador de rutas</h3>
+          <p>Rutas punto a punto usando A*, exclusivamente por infraestructura ciclista.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-database"></i>
+          <h3>Datos en tiempo real</h3>
+          <p>Los carriles se consultan al momento desde OpenStreetMap, siempre actualizados.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-feather"></i>
+          <h3>Sin dependencias de build</h3>
+          <p>JavaScript, HTML y CSS vanilla. Sin frameworks, sin bundler, carga instantánea.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEYENDA -->
+    <section class="section">
+      <h2><span class="hash">#</span> Tipos de carril</h2>
+      <div class="legend-list">
+        <div class="legend-item">
+          <div class="legend-line" style="background:#1D9E75"></div>
+          <div>
+            <span class="legend-name">Vía ciclista exclusiva</span>
+            <span class="legend-desc">Carretera o camino reservado únicamente para bicicletas</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:#378ADD"></div>
+          <div>
+            <span class="legend-name">Carril en calzada</span>
+            <span class="legend-desc">Carril bici señalizado dentro de la vía de tráfico rodado</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:#D85A30"></div>
+          <div>
+            <span class="legend-name">Acera bici / otro</span>
+            <span class="legend-desc">Vía compartida con peatones u otro tipo de infraestructura ciclista</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section">
+      <h2><span class="hash">#</span> Tecnologías usadas</h2>
+      <div class="tech-list">
+        <div class="tech-item">
+          <span class="tech-name">Leaflet</span>
+          <span class="tech-desc">Mapas interactivos en el navegador</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">Overpass API</span>
+          <span class="tech-desc">Consulta de datos ciclistas desde OpenStreetMap</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">Nominatim</span>
+          <span class="tech-desc">Geocodificación y autocompletado de ciudades</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">A*</span>
+          <span class="tech-desc">Algoritmo de búsqueda de rutas sobre el grafo ciclista</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">JS / HTML / CSS</span>
+          <span class="tech-desc">Vanilla, sin frameworks ni bundler</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

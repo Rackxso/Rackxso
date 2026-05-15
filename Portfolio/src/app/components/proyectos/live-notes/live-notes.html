@@ -1,0 +1,151 @@
+<main>
+  <div class="ln-wrap">
+
+    <!-- HEADER -->
+    <div class="ln-header">
+      <div class="ln-title-row">
+        <div class="ln-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div>
+          <h1>LiveNotes.</h1>
+          <p class="ln-tagline">Tu workspace personal, todo en uno.</p>
+        </div>
+      </div>
+      <div class="ln-badges">
+        <span class="badge badge-live"><i class="fa-solid fa-circle"></i> En producción</span>
+        <span class="badge badge-android"><i class="fa-brands fa-android"></i> Próximamente en Play Store</span>
+      </div>
+      <div class="ln-links">
+        <a href="https://live-notes.org" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <i class="fa-solid fa-globe"></i> Abrir app
+        </a>
+        <a href="https://github.com/Rackxso/LiveNotes" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fa-brands fa-github"></i> Ver código
+        </a>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <section class="section">
+      <h2><span class="hash">#</span> ¿Qué es LiveNotes?</h2>
+      <p>
+        LiveNotes es un workspace personal diseñado para centralizar las herramientas del día a día
+        en una sola aplicación limpia y rápida. La idea surgió de la necesidad de tener notas,
+        finanzas, hábitos y calendario en un único lugar sin depender de cinco apps distintas.
+      </p>
+      <pre class="comment">// Disponible en web y como app nativa Android vía Capacitor</pre>
+      <p>
+        La aplicación soporta múltiples idiomas y está optimizada para funcionar sin conexión,
+        guardando los datos localmente con sincronización opcional.
+      </p>
+    </section>
+
+    <!-- CARRUSEL -->
+    <section class="section">
+      <h2><span class="hash">#</span> Pantallas</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          @for (slide of slides; track $index) {
+            <div class="carousel-slide" [class.active]="current() === $index">
+              @if (slide.src) {
+                <img [src]="slide.src" [alt]="slide.caption" />
+              } @else {
+                <div class="slide-placeholder">
+                  <i [class]="slide.icon"></i>
+                  <span>{{ slide.caption }}</span>
+                  <span class="placeholder-hint">Captura próximamente</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <button class="carousel-btn prev" (click)="prev()" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" (click)="next()" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="carousel-caption">{{ slides[current()].caption }}</div>
+
+        <div class="carousel-dots">
+          @for (slide of slides; track $index) {
+            <button
+              class="dot"
+              [class.active]="current() === $index"
+              (click)="goTo($index)"
+              [attr.aria-label]="slide.caption"
+            ></button>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="section">
+      <h2><span class="hash">#</span> Funcionalidades</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-note-sticky"></i>
+          <h3>Notas</h3>
+          <p>Crea y organiza notas con categorías personalizadas. Editor simple y sin distracciones.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Finanzas</h3>
+          <p>Registro de ingresos y gastos con visualización por categoría y resumen mensual.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-fire"></i>
+          <h3>Hábitos</h3>
+          <p>Seguimiento diario de hábitos con rachas acumuladas y calendario de progreso.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-calendar-days"></i>
+          <h3>Calendario</h3>
+          <p>Vista mensual con eventos y recordatorios integrados con el resto del workspace.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-language"></i>
+          <h3>Multidioma</h3>
+          <p>Interfaz disponible en varios idiomas con detección automática del sistema.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-brands fa-android"></i>
+          <h3>App Android</h3>
+          <p>En desarrollo como app nativa Android con Capacitor. Misma base de código, próximamente en Play Store.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section">
+      <h2><span class="hash">#</span> Tecnologías usadas</h2>
+      <div class="tech-list">
+        <div class="tech-item">
+          <span class="tech-name">Angular 21</span>
+          <span class="tech-desc">Framework principal, standalone components</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">TypeScript</span>
+          <span class="tech-desc">Modo strict, tipado fuerte en toda la app</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">RxJS</span>
+          <span class="tech-desc">Gestión de estado reactivo y flujos de datos</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">Capacitor</span>
+          <span class="tech-desc">Empaquetado como app nativa Android</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-name">Stripe</span>
+          <span class="tech-desc">Pasarela de pago para el plan premium</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

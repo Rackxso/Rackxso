@@ -21,4 +21,12 @@ export const routes: Routes = [
         path: 'contact',
         loadComponent: () => import('./components/contact/contact').then(m => m.Contact)
     },
+    {
+        path: 'projects/live-notes',
+        loadComponent: () => import('./components/proyectos/live-notes/live-notes').then(m => m.LiveNotes)
+    },
+    {
+        path: 'projects/cyclepath',
+        loadComponent: () => import('./components/proyectos/cyclepath/cyclepath').then(m => m.Cyclepath)
+    },
 ];
