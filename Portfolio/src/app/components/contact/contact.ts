@@ -11,6 +11,9 @@ export class Contact {
 
   protected readonly email = signal('');
   protected copied = false;
+  protected showCv = false;
+
+  toggleCv() { this.showCv = !this.showCv; }
 
   constructor() {
     afterNextRender(() => this.email.set(atob(Contact.E)));

@@ -45,7 +45,33 @@
           <span class="value">+34 693 30 20 42</span>
         </div>
       </div>
+      <div class="contact-item" (click)="toggleCv()">
+        <div class="icon"><i class="fa-solid fa-file-pdf"></i></div>
+        <div class="info">
+          <span class="label">Currículum</span>
+          <span class="value">ÓscarUreñaSalvador.pdf</span>
+        </div>
+        <i class="arrow" [class]="showCv ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+      </div>
     </div>
+
+    @if (showCv) {
+      <div class="cv-preview">
+        <div class="cv-actions">
+          <a href="/cv.pdf" download="ÓscarUreñaSalvador.pdf" class="cv-btn">
+            <i class="fa-solid fa-download"></i> Descargar
+          </a>
+          <a href="/cv.pdf" target="_blank" class="cv-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir
+          </a>
+        </div>
+        <embed src="/cv.pdf" type="application/pdf" class="cv-embed" />
+        <p class="cv-fallback">
+          Tu navegador no soporta previsualización de PDF.
+          <a href="/cv.pdf" target="_blank">Ábrelo aquí.</a>
+        </p>
+      </div>
+    }
 
     <div class="message-box">
       <i class="fa-solid fa-comment-dots"></i>

@@ -13,6 +13,7 @@ export class App {
 
   public openedTabs: string[] = [];
   public activeTab: string = '';
+  public sidebarOpen = false;
 
   @ViewChild('tabsBar') tabsBar!: ElementRef<HTMLElement>;
 
@@ -31,11 +32,16 @@ export class App {
       });
   }
 
+  public toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
   public redirigir(pagina: string) {
     if (!this.openedTabs.includes(pagina)) {
       this.openedTabs.push(pagina);
     }
     this.activeTab = pagina;
+    this.sidebarOpen = false;
     this.router.navigate([`/${pagina}`]);
   }
 

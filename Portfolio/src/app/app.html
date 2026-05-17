@@ -1,14 +1,13 @@
 <section>
   <header>
+    <button class="hamburger" (click)="toggleSidebar()" aria-label="Menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <i class="fa-solid fa-code"></i>
     Porfolio de Óscar Ureña Salvador
   </header>
   <div class="cuerpo">
-    <div class="columna">
-      <i class="fa-regular fa-file"></i>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </div>
-    <div class="sidebar">
+    <div class="sidebar" [class.open]="sidebarOpen">
       <div class="nav-item about" (click)="redirigir('about')">
         <i class="fa-solid fa-person"></i>
         <p>Sobre_mí.md</p>
@@ -26,6 +25,7 @@
         <p>Contacto.md</p>
       </div>
     </div>
+    <div class="sidebar-overlay" [class.visible]="sidebarOpen" (click)="toggleSidebar()"></div>
     <div class="editor">
       <div class="tabs-bar" #tabsBar>
         @for (tab of openedTabs; track tab) {

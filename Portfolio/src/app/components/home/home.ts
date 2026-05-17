@@ -53,11 +53,16 @@ export class Home implements AfterViewInit, OnDestroy {
     const mouse = { x: -9999, y: -9999 };
     let particles: Particle[] = [];
     let t = 0;
+    let isDragging = false;
 
     const N = 400;
     const MAX_DIST = 120;
     const LIGHT_RADIUS_DOTS = 300;
     const LIGHT_RADIUS_LINES = 170;
+
+    let currentLrD = LIGHT_RADIUS_DOTS;
+    let currentLrL = LIGHT_RADIUS_LINES;
+    let currentBrightness = 0.6;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -95,10 +100,17 @@ export class Home implements AfterViewInit, OnDestroy {
       t++;
       ctx.clearRect(0, 0, W, H);
 
+      const lrDTarget = isDragging ? LIGHT_RADIUS_DOTS + 50 : LIGHT_RADIUS_DOTS;
+      const lrLTarget = isDragging ? LIGHT_RADIUS_LINES + 50 : LIGHT_RADIUS_LINES;
+      const brightnessTarget = isDragging ? 0.8 : 0.6;
+      currentLrD += (lrDTarget - currentLrD) * 0.08;
+      currentLrL += (lrLTarget - currentLrL) * 0.08;
+      currentBrightness += (brightnessTarget - currentBrightness) * 0.08;
+
       const mx = mouse.x * devicePixelRatio;
       const my = mouse.y * devicePixelRatio;
-      const lrD = LIGHT_RADIUS_DOTS * devicePixelRatio;
-      const lrL = LIGHT_RADIUS_LINES * devicePixelRatio;
+      const lrD = currentLrD * devicePixelRatio;
+      const lrL = currentLrL * devicePixelRatio;
       const maxD = MAX_DIST * devicePixelRatio;
 
       for (const p of particles) {
@@ -126,7 +138,7 @@ export class Home implements AfterViewInit, OnDestroy {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(100, 160, 210, ${vis * (1 - d / maxD) * 0.6})`;
+            ctx.strokeStyle = `rgba(100, 160, 210, ${vis * (1 - d / maxD) * currentBrightness})`;
             ctx.lineWidth = devicePixelRatio * 0.7;
             ctx.stroke();
           }
@@ -160,6 +172,7 @@ export class Home implements AfterViewInit, OnDestroy {
       this.animId = requestAnimationFrame(draw);
     };
 
+    // Desktop (mouse)
     container.addEventListener('mousemove', e => {
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
@@ -168,7 +181,36 @@ export class Home implements AfterViewInit, OnDestroy {
     container.addEventListener('mouseleave', () => {
       mouse.x = -9999;
       mouse.y = -9999;
+      isDragging = false;
     });
+    container.addEventListener('mousedown', () => { isDragging = true; });
+    container.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Mobile (touch) — passive para no bloquear el scroll
+    const getRect = () => canvas.getBoundingClientRect();
+    container.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      const r = getRect();
+      mouse.x = t.clientX - r.left;
+      mouse.y = t.clientY - r.top;
+      isDragging = true;
+    }, { passive: true });
+    container.addEventListener('touchmove', e => {
+      const t = e.touches[0];
+      const r = getRect();
+      mouse.x = t.clientX - r.left;
+      mouse.y = t.clientY - r.top;
+    }, { passive: true });
+    container.addEventListener('touchend', () => {
+      isDragging = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }, { passive: true });
+    container.addEventListener('touchcancel', () => {
+      isDragging = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }, { passive: true });
 
     this.resizeHandler = () => {
       cancelAnimationFrame(this.animId);

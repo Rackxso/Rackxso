@@ -23,24 +23,39 @@ header {
   }
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-color1);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  opacity: 0.7;
+  line-height: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+
+  &.visible {
+    display: block;
+  }
+}
+
 .cuerpo {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: auto auto 1fr;
-
-  & .columna {
-    padding: 7px;
-    background: var(--header-bg-color);
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    color: var(--text-color1);
-
-    & i {
-      font-size: 25px;
-    }
-  }
+  grid-template-columns: auto 1fr;
 
   & .sidebar {
     background: var(--sidebar-bg-color);
@@ -214,55 +229,39 @@ router-outlet {
 
 /* === RESPONSIVIDAD MÓVIL === */
 @media (max-width: 640px) {
+  .hamburger {
+    display: block;
+  }
+
   .cuerpo {
     display: flex;
     flex-direction: column;
-  }
-
-  .columna {
-    display: none;
+    position: relative;
   }
 
   .sidebar {
-    order: 2;
-    flex-direction: row;
-    padding: 6px;
-    gap: 4px;
-    border-top: 1px solid color-mix(in hsl, var(--header-bg-color) 30%, var(--text-color1) 70%);
-    overflow-x: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+    flex-direction: column;
+    overflow-y: auto;
 
-    & .nav-item {
-      flex: 1;
-      flex-direction: column;
-      align-items: center;
-      padding: 8px 4px;
-      gap: 4px;
-      justify-content: center;
-      border-radius: 8px;
-
-      & p {
-        font-size: 0.65rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 60px;
-      }
+    &.open {
+      transform: translateX(0);
     }
   }
 
   .editor {
-    order: 1;
     flex: 1;
     min-height: 0;
 
     & .tabs-bar {
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      display: none;
     }
   }
 }
